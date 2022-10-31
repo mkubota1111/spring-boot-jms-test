@@ -2,8 +2,6 @@ package com.mkubota.jms;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.jms.Message;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +17,7 @@ public class UserReceiver {
   ConfirmationSender confirmationSender;
 
   @JmsListener(destination = "userQueue", containerFactory = "connectionFactory")
-  public void receiveMessage(User receivedUser, Message message) {
-    logger.info("Original received message: " + message);
+  public void receiveMessage(User receivedUser) {
     logger.info("Received user: " + receivedUser);
     confirmationSender
         .sendMessage(new Confirmation(id.incrementAndGet(), "User %s received.".formatted(receivedUser.getEmail())));

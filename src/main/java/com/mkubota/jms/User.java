@@ -40,10 +40,11 @@ public class User {
 
   @Override
   public String toString() {
+    // This is only used to log a nice message
     return """
-        User{email='%1$s'\
-        ,rating=%2$s\
-        ,active=%3$s}\
+        {email: '%1$s'\
+        ,rating: %2$s\
+        ,active: %3$s}\
         """.formatted(email, rating, active);
   }
 }

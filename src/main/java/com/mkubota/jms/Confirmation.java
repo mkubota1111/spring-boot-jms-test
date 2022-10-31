@@ -34,11 +34,10 @@ public class Confirmation {
 
   @Override
   public String toString() {
-    String str = """
-        Confirmation{ackNumber='%1$d'\
-        ,verificationComment=%2$s}\
+    // This is only used to log a nice message
+    return """
+        {ackNumber: %1$d\
+        ,verificationComment: '%2$s'}\
         """.formatted(ackNumber, verificationComment);
-    logger.info("Confirmation.toString(): " + str);
-    return str;
   }
 }
