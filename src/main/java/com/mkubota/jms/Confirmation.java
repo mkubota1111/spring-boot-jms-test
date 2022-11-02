@@ -1,10 +1,6 @@
 package com.mkubota.jms;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class Confirmation {
-  private Logger logger = LoggerFactory.getLogger(getClass());
   private int ackNumber;
   private String verificationComment;
 
