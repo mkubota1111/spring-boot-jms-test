@@ -20,6 +20,7 @@ public class AppStarter {
     JmsTemplate jms = ctx.getBean(JmsTemplate.class);
 
     logger.info("Sending an user message");
+    // Instead of userService.processUser(new User(...));
     jms.convertAndSend("userQueue", new User("test@test.gov", 1d, true), msg -> {
       msg.setStringProperty("operation", "create");
       return msg;
@@ -28,7 +29,6 @@ public class AppStarter {
       msg.setStringProperty("operation", "create2");
       return msg;
     });
-    // Instead of userService.processUser(new User(...));
 
     logger.info("Waiting for user and confirmation");
     Thread.sleep(3000);
